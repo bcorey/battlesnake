@@ -2,7 +2,7 @@
 authors = ["Martin Amps <https://twitter.com/martinamps>"]
 name = "battlesnake"
 version = "1.0.0"
-edition = "2018"
+edition = "2024"
 
 readme = "README.md"
 keywords = ["battlesnake"]
