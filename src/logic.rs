@@ -189,15 +189,15 @@ impl Moves {
     }
 
     fn stay_in_bounds(mut self, my_head: &Coord, board_width: &i32, board_height: &i32) -> Self {
-        if my_head.x >= *board_width {
+        if my_head.x >= *board_width - 1 {
             self.right = None;
-        } else if my_head.x <= 0 {
+        } else if my_head.x <= 1 {
             self.left = None;
         }
 
-        if my_head.y >= *board_height {
+        if my_head.y >= *board_height - 1 {
             self.up = None;
-        } else if my_head.y <= 0 {
+        } else if my_head.y <= 1 {
             self.down = None;
         }
         self
