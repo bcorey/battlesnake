@@ -4,12 +4,10 @@ extern crate rocket;
 use log::info;
 use rocket::fairing::AdHoc;
 use rocket::http::Status;
-use rocket::serde::{json::Json, Deserialize};
+use rocket::serde::{Deserialize, json::Json};
 use serde::Serialize;
 use serde_json::Value;
 use std::collections::HashMap;
-use std::env;
-
 mod logic;
 
 // API and Response Objects
@@ -125,19 +123,6 @@ fn handle_end(end_req: Json<GameState>) -> Status {
 
 #[launch]
 fn rocket() -> _ {
-    // Lots of web hosting services expect you to bind to the port specified by the `PORT`
-    // environment variable. However, Rocket looks at the `ROCKET_PORT` environment variable.
-    // If we find a value for `PORT`, we set `ROCKET_PORT` to that value.
-    if let Ok(port) = env::var("PORT") {
-        env::set_var("ROCKET_PORT", &port);
-    }
-
-    // We default to 'info' level logging. But if the `RUST_LOG` environment variable is set,
-    // we keep that value instead.
-    if env::var("RUST_LOG").is_err() {
-        env::set_var("RUST_LOG", "info");
-    }
-
     env_logger::init();
 
     info!("Starting Battlesnake Server...");
