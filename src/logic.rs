@@ -12,7 +12,7 @@
 
 use crate::Coord;
 use log::info;
-use serde_json::{json, Value};
+use serde_json::{Value, json};
 
 use crate::{Battlesnake, Board, Game};
 
@@ -228,7 +228,7 @@ pub fn get_move(_game: &Game, turn: &i32, board: &Board, you: &Battlesnake) -> V
         .get_all_safe_moves()
         .first()
         .cloned()
-        .unwrap_or(MvView::Up);
+        .unwrap_or(MvView::Right);
 
     info!("MOVE {}: {}", turn, chosen);
     json!({ "move": chosen.to_string() })
