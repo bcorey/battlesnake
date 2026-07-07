@@ -24,7 +24,7 @@ pub struct Game {
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Board {
-    height: u32,
+    height: i32,
     width: i32,
     food: Vec<Coord>,
     snakes: Vec<Battlesnake>,
@@ -43,10 +43,40 @@ pub struct Battlesnake {
     shout: Option<String>,
 }
 
-#[derive(Deserialize, Serialize, Debug)]
+#[derive(Deserialize, Serialize, Debug, PartialEq)]
 pub struct Coord {
     x: i32,
     y: i32,
+}
+
+impl Coord {
+    fn left(&self) -> Self {
+        Self {
+            x: self.x - 1,
+            y: self.y,
+        }
+    }
+
+    fn right(&self) -> Self {
+        Self {
+            x: self.x + 1,
+            y: self.y,
+        }
+    }
+
+    fn up(&self) -> Self {
+        Self {
+            x: self.x,
+            y: self.y + 1,
+        }
+    }
+
+    fn down(&self) -> Self {
+        Self {
+            x: self.x,
+            y: self.y,
+        }
+    }
 }
 
 #[derive(Deserialize, Serialize, Debug)]
