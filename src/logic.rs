@@ -25,7 +25,7 @@ pub fn info() -> Value {
     json!({
         "apiversion": "1",
         "author": "", // TODO: Your Battlesnake Username
-        "color": "#888888", // TODO: Choose color
+        "color": "#21c473", // TODO: Choose color
         "head": "default", // TODO: Choose head
         "tail": "default", // TODO: Choose tail
     })
