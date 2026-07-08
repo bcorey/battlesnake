@@ -228,7 +228,7 @@ pub fn get_move(_game: &Game, turn: &i32, board: &Board, you: &Battlesnake) -> V
         .get_all_safe_moves()
         .first()
         .cloned()
-        .unwrap_or(MvView::Right);
+        .unwrap_or(MvView::Down);
 
     info!("MOVE {}: {}", turn, chosen);
     json!({ "move": chosen.to_string() })
